@@ -25,8 +25,11 @@ This little project is going to be a part for a larger project.
 <br>
 
 ## Project Foldes
-| Folder        | Description                              |
-| ------------- | ---------------------------------------- |
+| Folder | Description                                       |
+| ------ | ------------------------------------------------- |
+| db     | The directory where the database is located.      |
+| forms  | The directory includes the scripts of every form. |
+| src    | The directory contains the general scripts.       |
 <br>
 
 > ### ***If you think education is expensive, try ignorance. - Derek Bok***
