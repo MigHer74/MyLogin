@@ -11,6 +11,8 @@ On the secondary window can manage the users and here is where the app uses bcry
 
 Finally, if the user name and password are correct the app shows a succesful access message if not,  it shows an error message.
 
+The users data stores in a sqlite3 database file.
+
 This little project is going to be a part for a larger project.
 <br>
 
