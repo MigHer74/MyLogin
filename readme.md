@@ -17,11 +17,14 @@ This little project is going to be a part for a larger project.
 <br>
 
 ## Project Files
-| Files            | Description                                                            |
-| ---------------- | ---------------------------------------------------------------------- |
-| requirements.txt | File containing the names of the project's additional libraries.       |
-| readme.md        | Description and information of the project.                            |
-| .gitignore       | Includes non-important files of the project.                           |
+| Files            | Description                                                      |
+| ---------------- | ---------------------------------------------------------------- |
+| main.py          | Script that starts the app.                                      |
+| dba.py           | Functions for manage the database.                               |
+| tools.py         | Contains functions for the app.                                  |
+| requirements.txt | File containing the names of the project's additional libraries. |
+| readme.md        | Description and information of the project.                      |
+| .gitignore       | Includes non-important files of the project.                     |
 <br>
 
 ## Project Foldes
