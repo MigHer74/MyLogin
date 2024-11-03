@@ -1,4 +1,5 @@
 from pathlib import Path
+from PIL import ImageTk, Image
 from src import dba as db
 
 
@@ -11,3 +12,11 @@ def verify_storage():
 
     if not Path(dbFile).is_file():
         db.existing_table()
+
+
+def image_resize(infoPic, infoWidth, infoHeight):
+    imgTemp = Image.open(infoPic)
+    imgTemp = imgTemp.resize((infoWidth, infoHeight))
+    imgFin = ImageTk.PhotoImage(imgTemp)
+
+    return imgFin
