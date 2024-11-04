@@ -11,10 +11,10 @@ class MyLogin(Window):
     def build_login(self):
         # Title Frame
         titleFrame = Frame(self)
-        titleFrame.grid(row=0, column=0)
+        titleFrame.grid(row=0, column=0, columnspan=2, pady=(15, 0))
 
         titleLabel = Label(titleFrame, text="Login",
-                           font=("Centura", 22, "bold"))
+                           font=("Centura", 30, "bold"))
         titleLabel.pack()
 
         # Image Frame
