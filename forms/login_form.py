@@ -19,7 +19,7 @@ class MyLogin(Window):
 
         # Image Frame
         imageFrame = Frame(self)
-        imageFrame.grid(row=1, column=0)
+        imageFrame.grid(row=1, rowspan=2, column=0, padx=(20, 0), pady=(20, 0))
 
         self.imageLogin = tl.image_resize("./img/monitor.png", 250, 250)
 
