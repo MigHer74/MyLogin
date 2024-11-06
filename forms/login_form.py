@@ -56,9 +56,11 @@ class MyLogin(Window):
 
         # Add User Frame
         addUserFrame = Frame(self)
-        addUserFrame.grid(row=3, column=1)
+        addUserFrame.grid(row=3, column=1, padx=(40, 20), pady=(20, 15),
+                          sticky="e")
 
-        self.imageAdd = tl.image_resize("./img/add_user.png", 25, 25)
+        self.imageAdd = tl.image_resize("./img/add_user.png", 35, 35)
 
-        addUserButton = Button(addUserFrame, image=self.imageAdd)
+        addUserButton = Button(addUserFrame, image=self.imageAdd, padding=0,
+                               bootstyle="success-link")
         addUserButton.pack()
