@@ -28,7 +28,7 @@ class MyLogin(Window):
 
         # Entries Frame
         entriesFrame = Frame(self, relief="raised")
-        entriesFrame.grid(row=1, column=1, padx=(20, 20), pady=(20, 0))
+        entriesFrame.grid(row=1, column=1, padx=(40, 20), pady=(20, 0))
 
         nameLabel = Label(entriesFrame, text="User Name")
         nameLabel.grid(row=0, column=0, padx=(15, 15), pady=(15, 0))
@@ -44,13 +44,15 @@ class MyLogin(Window):
 
         # Buttons Frame
         buttonsFrame = Frame(self)
-        buttonsFrame.grid(row=2, column=1)
+        buttonsFrame.grid(row=2, column=1, padx=(40, 20), pady=(20, 0))
 
-        buttonAccess = Button(buttonsFrame, width=15, text="Access")
-        buttonAccess.grid(row=0, column=0)
+        buttonAccess = Button(buttonsFrame, width=15, text="Access",
+                              bootstyle="success")
+        buttonAccess.grid(row=0, column=0, padx=(0, 25))
 
-        buttonCancel = Button(buttonsFrame, width=15, text="Cancel")
-        buttonCancel.grid(row=1, column=0)
+        buttonCancel = Button(buttonsFrame, width=15, text="Cancel",
+                              bootstyle="outline-danger")
+        buttonCancel.grid(row=0, column=1)
 
         # Add User Frame
         addUserFrame = Frame(self)
