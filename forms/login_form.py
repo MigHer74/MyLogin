@@ -1,5 +1,6 @@
 from ttkbootstrap import Window, Frame, Label, Entry, Button
 from src import tools as tl
+from forms import users_form as uf
 
 
 class MyLogin(Window):
@@ -51,7 +52,7 @@ class MyLogin(Window):
         buttonAccess.grid(row=0, column=0, padx=(0, 25))
 
         buttonCancel = Button(buttonsFrame, width=15, text="Cancel",
-                              bootstyle="outline-danger")
+                              command=self.quit, bootstyle="outline-danger")
         buttonCancel.grid(row=0, column=1)
 
         # Add User Frame
@@ -62,5 +63,6 @@ class MyLogin(Window):
         self.imageAdd = tl.image_resize("./img/add_user.png", 35, 35)
 
         addUserButton = Button(addUserFrame, image=self.imageAdd, padding=0,
+                               command=lambda: uf.MyUsers(self),
                                bootstyle="success-link")
         addUserButton.pack()
