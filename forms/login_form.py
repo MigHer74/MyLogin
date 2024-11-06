@@ -27,20 +27,20 @@ class MyLogin(Window):
         imageLabel.pack()
 
         # Entries Frame
-        entriesFrame = Frame(self)
-        entriesFrame.grid(row=1, column=1)
+        entriesFrame = Frame(self, relief="raised")
+        entriesFrame.grid(row=1, column=1, padx=(20, 20), pady=(20, 0))
 
         nameLabel = Label(entriesFrame, text="User Name")
-        nameLabel.grid(row=0, column=0)
+        nameLabel.grid(row=0, column=0, padx=(15, 15), pady=(15, 0))
 
         nameEntry = Entry(entriesFrame, width=25)
-        nameEntry.grid(row=1, column=0)
+        nameEntry.grid(row=1, column=0, padx=(15, 15), pady=(5, 15))
 
         passwordLabel = Label(entriesFrame, text="Password")
-        passwordLabel.grid(row=2, column=0)
+        passwordLabel.grid(row=2, column=0, padx=(15, 15), pady=(15, 0))
 
         passwordEntry = Entry(entriesFrame, width=25)
-        passwordEntry.grid(row=3, column=0)
+        passwordEntry.grid(row=3, column=0, padx=(15, 15), pady=(5, 20))
 
         # Buttons Frame
         buttonsFrame = Frame(self)
