@@ -1,4 +1,5 @@
-from ttkbootstrap import Toplevel, Frame, Label, Entry, Treeview, Scrollbar
+from ttkbootstrap import Toplevel, Frame, Label, Entry, Button
+from ttkbootstrap import Treeview, Scrollbar
 
 
 class MyUsers(Toplevel):
@@ -49,3 +50,25 @@ class MyUsers(Toplevel):
 
         self.tblUser.config(yscrollcommand=self.sbrUser.set)
         self.sbrUser.config(command=self.tblUser.yview)
+
+        # Buttons Frame
+        self.btnFrame = Frame(self)
+        self.btnFrame.grid(row=1, column=1)
+
+        self.btnNew = Button(self.btnFrame, width=15, text="New")
+        self.btnNew.grid(row=0, column=0)
+
+        self.btnPassword = Button(self.btnFrame, width=15, text="Password")
+        self.btnPassword.grid(row=0, column=1)
+
+        self.btnSave = Button(self.btnFrame, width=15, text="Save")
+        self.btnSave.grid(row=1, column=0)
+
+        self.btnDelete = Button(self.btnFrame, width=15, text="Delete")
+        self.btnDelete.grid(row=1, column=1)
+
+        self.btnCancel = Button(self.btnFrame, width=15, text="Cancel")
+        self.btnCancel.grid(row=2, column=0)
+
+        self.btnClose = Button(self.btnFrame, width=15, text="Close")
+        self.btnClose.grid(row=2, column=1)
