@@ -64,22 +64,27 @@ class MyUsers(Toplevel):
 
         # Buttons Frame
         self.btnFrame = Frame(self)
-        self.btnFrame.grid(row=1, column=1)
+        self.btnFrame.grid(row=1, column=1, padx=(20, 20), pady=(20, 20))
 
         self.btnNew = Button(self.btnFrame, width=15, text="New")
-        self.btnNew.grid(row=0, column=0)
+        self.btnNew.grid(row=0, column=0, padx=(0, 20), pady=(0, 20))
 
-        self.btnPassword = Button(self.btnFrame, width=15, text="Password")
-        self.btnPassword.grid(row=0, column=1)
+        self.btnPassword = Button(self.btnFrame, width=15, text="Password",
+                                  bootstyle="info")
+        self.btnPassword.grid(row=0, column=1, pady=(0, 20))
 
-        self.btnSave = Button(self.btnFrame, width=15, text="Save")
-        self.btnSave.grid(row=1, column=0)
+        self.btnSave = Button(self.btnFrame, width=15, text="Save",
+                              bootstyle="success")
+        self.btnSave.grid(row=1, column=0, padx=(0, 20), pady=(0, 20))
 
-        self.btnDelete = Button(self.btnFrame, width=15, text="Delete")
-        self.btnDelete.grid(row=1, column=1)
+        self.btnDelete = Button(self.btnFrame, width=15, text="Delete",
+                                bootstyle="outline-danger")
+        self.btnDelete.grid(row=1, column=1, pady=(0, 20))
 
-        self.btnCancel = Button(self.btnFrame, width=15, text="Cancel")
-        self.btnCancel.grid(row=2, column=0)
+        self.btnCancel = Button(self.btnFrame, width=15, text="Cancel",
+                                bootstyle="warning")
+        self.btnCancel.grid(row=2, column=0, padx=(0, 20))
 
-        self.btnClose = Button(self.btnFrame, width=15, text="Close")
+        self.btnClose = Button(self.btnFrame, width=15, text="Close",
+                               command=self.destroy, bootstyle="secondary")
         self.btnClose.grid(row=2, column=1)
