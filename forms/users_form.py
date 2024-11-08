@@ -12,32 +12,10 @@ class MyUsers(Toplevel):
         self.focus()
 
     def build_users(self):
-        # User Data Frame
-        self.entryFrame = Frame(self)
-        self.entryFrame.grid(row=0, column=0, columnspan=2,
-                             padx=(20, 20), pady=(15, 0))
-
-        self.idLabel = Label(self.entryFrame, text="User Id")
-        self.idLabel.grid(row=0, column=0, padx=(0, 15))
-
-        self.nameLabel = Label(self.entryFrame, text="User Name")
-        self.nameLabel.grid(row=0, column=1, padx=(0, 15))
-
-        self.passwordLabel = Label(self.entryFrame, text="User Password")
-        self.passwordLabel.grid(row=0, column=2)
-
-        self.idEntry = Entry(self.entryFrame, width=8, justify="center")
-        self.idEntry.grid(row=1, column=0, padx=(0, 15))
-
-        self.nameEntry = Entry(self.entryFrame, width=40)
-        self.nameEntry.grid(row=1, column=1, padx=(0, 15))
-
-        self.passwordEntry = Entry(self.entryFrame, width=20)
-        self.passwordEntry.grid(row=1, column=2)
-
         # Users List Frame
         self.tblFrame = Frame(self)
-        self.tblFrame.grid(row=1, column=0, padx=(20, 0), pady=(15, 15))
+        self.tblFrame.grid(row=0, rowspan=2, column=0,
+                           padx=(20, 0), pady=(20, 20))
 
         self.tblUser = Treeview(self.tblFrame, columns=(1, 2),
                                 show="headings", height=15,
@@ -58,6 +36,28 @@ class MyUsers(Toplevel):
 
         self.tblUser.config(yscrollcommand=self.sbrUser.set)
         self.sbrUser.config(command=self.tblUser.yview)
+
+        # User Data Frame
+        self.entryFrame = Frame(self)
+        self.entryFrame.grid(row=0, column=1, padx=(20, 20), pady=(15, 0))
+
+        self.idLabel = Label(self.entryFrame, text="User Id")
+        self.idLabel.grid(row=0, column=0, padx=(0, 15))
+
+        self.nameLabel = Label(self.entryFrame, text="User Name")
+        self.nameLabel.grid(row=0, column=1, padx=(0, 15))
+
+        self.passwordLabel = Label(self.entryFrame, text="User Password")
+        self.passwordLabel.grid(row=0, column=2)
+
+        self.idEntry = Entry(self.entryFrame, width=8, justify="center")
+        self.idEntry.grid(row=1, column=0, padx=(0, 15))
+
+        self.nameEntry = Entry(self.entryFrame, width=40)
+        self.nameEntry.grid(row=1, column=1, padx=(0, 15))
+
+        self.passwordEntry = Entry(self.entryFrame, width=20)
+        self.passwordEntry.grid(row=1, column=2)
 
         # Buttons Frame
         self.btnFrame = Frame(self)
