@@ -39,25 +39,28 @@ class MyUsers(Toplevel):
 
         # User Data Frame
         self.entryFrame = Frame(self)
-        self.entryFrame.grid(row=0, column=1, padx=(20, 20), pady=(15, 0))
+        self.entryFrame.grid(row=0, column=1, padx=(20, 20), pady=(20, 0),
+                             sticky="n")
 
         self.idLabel = Label(self.entryFrame, text="User Id")
         self.idLabel.grid(row=0, column=0, padx=(0, 15))
 
         self.nameLabel = Label(self.entryFrame, text="User Name")
-        self.nameLabel.grid(row=0, column=1, padx=(0, 15))
+        self.nameLabel.grid(row=0, column=1)
 
-        self.passwordLabel = Label(self.entryFrame, text="User Password")
-        self.passwordLabel.grid(row=0, column=2)
+        self.passwordLabel = Label(self.entryFrame, text="Password")
+        self.passwordLabel.grid(row=3, column=0, padx=(0, 15), pady=(15, 0),
+                                sticky="w")
 
         self.idEntry = Entry(self.entryFrame, width=8, justify="center")
         self.idEntry.grid(row=1, column=0, padx=(0, 15))
 
         self.nameEntry = Entry(self.entryFrame, width=40)
-        self.nameEntry.grid(row=1, column=1, padx=(0, 15))
+        self.nameEntry.grid(row=1, column=1)
 
         self.passwordEntry = Entry(self.entryFrame, width=20)
-        self.passwordEntry.grid(row=1, column=2)
+        self.passwordEntry.grid(row=3, column=1, padx=(0, 15), pady=(15, 0),
+                                sticky="w")
 
         # Buttons Frame
         self.btnFrame = Frame(self)
