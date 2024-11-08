@@ -52,13 +52,14 @@ class MyUsers(Toplevel):
         self.passwordLabel.grid(row=3, column=0, padx=(0, 15), pady=(15, 0),
                                 sticky="w")
 
-        self.idEntry = Entry(self.entryFrame, width=8, justify="center")
+        self.idEntry = Entry(self.entryFrame, width=8, justify="center",
+                             state="disabled")
         self.idEntry.grid(row=1, column=0, padx=(0, 15))
 
-        self.nameEntry = Entry(self.entryFrame, width=40)
+        self.nameEntry = Entry(self.entryFrame, width=40, state="disabled")
         self.nameEntry.grid(row=1, column=1)
 
-        self.passwordEntry = Entry(self.entryFrame, width=20)
+        self.passwordEntry = Entry(self.entryFrame, width=20, state="disabled")
         self.passwordEntry.grid(row=3, column=1, padx=(0, 15), pady=(15, 0),
                                 sticky="w")
 
@@ -70,21 +71,21 @@ class MyUsers(Toplevel):
         self.btnNew.grid(row=0, column=0, padx=(0, 20), pady=(0, 20))
 
         self.btnPassword = Button(self.btnFrame, width=15, text="Password",
-                                  bootstyle="info")
+                                  state="disabled", bootstyle="info")
         self.btnPassword.grid(row=0, column=1, pady=(0, 20))
 
         self.btnSave = Button(self.btnFrame, width=15, text="Save",
-                              bootstyle="success")
+                              state="disabled", bootstyle="success")
         self.btnSave.grid(row=1, column=0, padx=(0, 20), pady=(0, 20))
 
         self.btnDelete = Button(self.btnFrame, width=15, text="Delete",
-                                bootstyle="outline-danger")
+                                state="disabled", bootstyle="outline-danger")
         self.btnDelete.grid(row=1, column=1, pady=(0, 20))
 
         self.btnCancel = Button(self.btnFrame, width=15, text="Cancel",
-                                bootstyle="warning")
+                                state="disabled", bootstyle="warning")
         self.btnCancel.grid(row=2, column=0, padx=(0, 20))
 
         self.btnClose = Button(self.btnFrame, width=15, text="Close",
-                               command=self.destroy, bootstyle="secondary")
+                               command=self.destroy, bootstyle="light")
         self.btnClose.grid(row=2, column=1)
