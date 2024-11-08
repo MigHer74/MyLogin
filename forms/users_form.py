@@ -37,7 +37,7 @@ class MyUsers(Toplevel):
 
         # Users List Frame
         self.tblFrame = Frame(self)
-        self.tblFrame.grid(row=1, column=0)
+        self.tblFrame.grid(row=1, column=0, padx=(20, 0), pady=(15, 15))
 
         self.tblUser = Treeview(self.tblFrame, columns=(1, 2),
                                 show="headings", height=15,
@@ -52,7 +52,8 @@ class MyUsers(Toplevel):
         self.tblUser.pack(side="left")
 
         # ScrollBar
-        self.sbrUser = Scrollbar(self.tblFrame, orient="vertical")
+        self.sbrUser = Scrollbar(self.tblFrame, orient="vertical",
+                                 bootstyle="round")
         self.sbrUser.pack(side="right", fill="y")
 
         self.tblUser.config(yscrollcommand=self.sbrUser.set)
