@@ -22,11 +22,17 @@ class MyUsers(Toplevel):
         self.nameLabel = Label(self.entryFrame, text="User Name")
         self.nameLabel.grid(row=0, column=1)
 
+        self.passwordLabel = Label(self.entryFrame, text="User Password")
+        self.passwordLabel.grid(row=0, column=2)
+
         self.idEntry = Entry(self.entryFrame, width=8, justify="center")
         self.idEntry.grid(row=1, column=0)
 
         self.nameEntry = Entry(self.entryFrame, width=40)
         self.nameEntry.grid(row=1, column=1)
+
+        self.passwordEntry = Entry(self.entryFrame, width=20)
+        self.passwordEntry.grid(row=1, column=2)
 
         # Users List Frame
         self.tblFrame = Frame(self)
