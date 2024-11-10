@@ -70,7 +70,8 @@ class MyUsers(Toplevel):
         self.btnFrame = Frame(self)
         self.btnFrame.grid(row=1, column=1, padx=(20, 20), pady=(20, 20))
 
-        self.btnNew = Button(self.btnFrame, width=15, text="New")
+        self.btnNew = Button(self.btnFrame, width=15, text="New",
+                             command=self.new_users)
         self.btnNew.grid(row=0, column=0, padx=(0, 20), pady=(0, 20))
 
         self.btnPassword = Button(self.btnFrame, width=15, text="Password",
@@ -103,10 +104,17 @@ class MyUsers(Toplevel):
                 self.tblUser.insert("", index="end", text=item[0],
                                     values=[item[0], item[1]])
 
+    def new_users(self):
+        self.enable_entries()
+        self.btnNew.config(state="disabled")
+        self.btnSave.config(state="normal")
+        self.btnCancel.config(state="normal")
+        self.idEntry.focus()
+
     def enable_entries(self):
-        self.idEntry.config(state="normal")
-        self.nameEntry.config(state="normal")
-        self.passwordEntry.config(state="normal")
+        self.idEntry.config(state="normal", bootstyle="success")
+        self.nameEntry.config(state="normal", bootstyle="success")
+        self.passwordEntry.config(state="normal", bootstyle="success")
 
     def disable_entries(self):
         self.idEntry.config(state="disabled")
