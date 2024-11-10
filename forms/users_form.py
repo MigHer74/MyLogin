@@ -1,5 +1,6 @@
 from ttkbootstrap import Toplevel, Frame, Label, Entry, Button
 from ttkbootstrap import Treeview, Scrollbar
+from src import dba as db
 
 
 class MyUsers(Toplevel):
@@ -89,3 +90,18 @@ class MyUsers(Toplevel):
         self.btnClose = Button(self.btnFrame, width=15, text="Close",
                                command=self.destroy, bootstyle="light")
         self.btnClose.grid(row=2, column=1)
+
+    def enable_entries(self):
+        self.idEntry.config(state="normal")
+        self.nameEntry.config(state="normal")
+        self.passwordEntry.config(state="normal")
+
+    def disable_entries(self):
+        self.idEntry.config(state="disabled")
+        self.nameEntry.config(state="disabled")
+        self.passwordEntry.config(state="disabled")
+
+    def clear_entries(self):
+        self.idEntry.delete(0, "end")
+        self.nameEntry.delete(0, "end")
+        self.passwordEntry.delete(0, "end")
