@@ -12,6 +12,8 @@ class MyUsers(Toplevel):
         self.grab_set()
         self.focus()
 
+        self.load_users()
+
     def build_users(self):
         # Users List Frame
         self.tblFrame = Frame(self)
@@ -90,6 +92,16 @@ class MyUsers(Toplevel):
         self.btnClose = Button(self.btnFrame, width=15, text="Close",
                                command=self.destroy, bootstyle="light")
         self.btnClose.grid(row=2, column=1)
+
+    def load_users(self):
+        dataUsers = db.retrieve_info()
+
+        if dataUsers:
+            self.tblUser.delete(*self.tblUser.get_children())
+
+            for item in dataUsers:
+                self.tblUser.insert("", index="end", text=item[0],
+                                    values=[item[0], item[1]])
 
     def enable_entries(self):
         self.idEntry.config(state="normal")
