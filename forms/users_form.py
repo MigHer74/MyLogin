@@ -88,7 +88,8 @@ class MyUsers(Toplevel):
         self.btnDelete.grid(row=1, column=1, pady=(0, 20))
 
         self.btnCancel = Button(self.btnFrame, width=15, text="Cancel",
-                                state="disabled", bootstyle="warning")
+                                command=self.cancel_users, state="disabled",
+                                bootstyle="warning")
         self.btnCancel.grid(row=2, column=0, padx=(0, 20))
 
         self.btnClose = Button(self.btnFrame, width=15, text="Close",
@@ -115,9 +116,18 @@ class MyUsers(Toplevel):
     def save_users(self):
         db.insert_info(self.idEntry.get(), self.nameEntry.get(),
                        self.passwordEntry.get())
+        self.cancel_users()
+        self.load_users()
+
+    def cancel_users(self):
         self.clear_entries()
         self.disable_entries()
-        self.load_users()
+
+        self.btnPassword.config(state="disabled")
+        self.btnNew.config(state="normal")
+        self.btnSave.config(state="disabled")
+        self.btnDelete.config(state="disabled")
+        self.btnCancel.config(state="disabled")
 
     def enable_entries(self):
         self.idEntry.config(state="normal", bootstyle="success")
