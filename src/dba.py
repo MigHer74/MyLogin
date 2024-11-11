@@ -39,3 +39,13 @@ def insert_info(dataId, dataName, dataPassword):
     curdb.execute(sqldb)
     condb.commit()
     condb.close()
+
+
+def delete_info(dataId):
+    sqldb = f"DELETE FROM 'users' WHERE user_id = '{dataId}';"
+
+    condb = connect()
+    curdb = condb.cursor()
+    curdb.execute(sqldb)
+    condb.commit()
+    condb.close()
