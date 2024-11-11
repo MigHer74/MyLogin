@@ -40,6 +40,9 @@ class MyUsers(Toplevel):
         self.tblUser.config(yscrollcommand=self.sbrUser.set)
         self.sbrUser.config(command=self.tblUser.yview)
 
+        self.tblUser.bind("<Double-Button-1>", self.select_modify)
+        self.tblUser.bind("<<TreeviewSelect>>", self.select_delete)
+
         # User Data Frame
         self.entryFrame = Frame(self)
         self.entryFrame.grid(row=0, column=1, padx=(20, 20), pady=(20, 0),
@@ -106,11 +109,30 @@ class MyUsers(Toplevel):
                 self.tblUser.insert("", index="end", text=item[0],
                                     values=[item[0], item[1]])
 
+    def select_delete(self, event):
+        keyUser = self.tblUser.item(self.tblUser.focus(), "text")
+
+        if keyUser != "":
+            self.btnDelete.config(state="normal")
+            self.btnPassword.config(state="normal")
+
+    def select_modify(self, event):
+        keyUser = self.tblUser.item(self.tblUser.focus(), "text")
+
+        if keyUser != "":
+            self.btnNew.config(state="disabled")
+            self.btnPassword.config(state="disabled")
+            self.btnSave.config(state="normal")
+            self.btnCancel.config(state="normal")
+            self.btnDelete.config(state="disabled")
+
     def new_users(self):
         self.enable_entries()
         self.btnNew.config(state="disabled")
+        self.btnPassword.config(state="disabled")
         self.btnSave.config(state="normal")
         self.btnCancel.config(state="normal")
+        self.btnDelete.config(state="disabled")
         self.idEntry.focus()
 
     def save_users(self):
