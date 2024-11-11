@@ -79,7 +79,8 @@ class MyUsers(Toplevel):
         self.btnPassword.grid(row=0, column=1, pady=(0, 20))
 
         self.btnSave = Button(self.btnFrame, width=15, text="Save",
-                              state="disabled", bootstyle="success")
+                              command=self.save_users, state="disabled",
+                              bootstyle="success")
         self.btnSave.grid(row=1, column=0, padx=(0, 20), pady=(0, 20))
 
         self.btnDelete = Button(self.btnFrame, width=15, text="Delete",
@@ -111,15 +112,22 @@ class MyUsers(Toplevel):
         self.btnCancel.config(state="normal")
         self.idEntry.focus()
 
+    def save_users(self):
+        db.insert_info(self.idEntry.get(), self.nameEntry.get(),
+                       self.passwordEntry.get())
+        self.clear_entries()
+        self.disable_entries()
+        self.load_users()
+
     def enable_entries(self):
         self.idEntry.config(state="normal", bootstyle="success")
         self.nameEntry.config(state="normal", bootstyle="success")
         self.passwordEntry.config(state="normal", bootstyle="success")
 
     def disable_entries(self):
-        self.idEntry.config(state="disabled")
-        self.nameEntry.config(state="disabled")
-        self.passwordEntry.config(state="disabled")
+        self.idEntry.config(state="disabled", bootstyle="default")
+        self.nameEntry.config(state="disabled", bootstyle="default")
+        self.passwordEntry.config(state="disabled", bootstyle="default")
 
     def clear_entries(self):
         self.idEntry.delete(0, "end")
