@@ -1,5 +1,6 @@
 from ttkbootstrap import Toplevel, Frame, Label, Entry, Button
 from ttkbootstrap import Treeview, Scrollbar
+from ttkbootstrap.dialogs.dialogs import Messagebox
 from src import dba as db
 
 
@@ -87,7 +88,8 @@ class MyUsers(Toplevel):
         self.btnSave.grid(row=1, column=0, padx=(0, 20), pady=(0, 20))
 
         self.btnDelete = Button(self.btnFrame, width=15, text="Delete",
-                                state="disabled", bootstyle="outline-danger")
+                                command=self.delete_users, state="disabled",
+                                bootstyle="outline-danger")
         self.btnDelete.grid(row=1, column=1, pady=(0, 20))
 
         self.btnCancel = Button(self.btnFrame, width=15, text="Cancel",
@@ -110,9 +112,9 @@ class MyUsers(Toplevel):
                                     values=[item[0], item[1]])
 
     def select_delete(self, event):
-        keyUser = self.tblUser.item(self.tblUser.focus(), "text")
+        self.keyUser = self.tblUser.item(self.tblUser.focus(), "text")
 
-        if keyUser != "":
+        if self.keyUser != "":
             self.btnDelete.config(state="normal")
             self.btnPassword.config(state="normal")
 
@@ -141,6 +143,31 @@ class MyUsers(Toplevel):
         self.cancel_users()
         self.load_users()
 
+        self.focus()
+
+    def delete_users(self):
+        deleteUser = db.retrieve_info(self.keyUser)
+
+        msgUser = f"Do you want to delete {deleteUser[0]} user info ?."
+
+        answer_user = Messagebox.show_question(message=msgUser,
+                                               title="Delete User", alert=True,
+                                               buttons=['Yes:success',
+                                                        'No:outline-danger'],
+                                               parent=self)
+
+        if answer_user != "No":
+            db.delete_info(self.keyUser)
+            self.load_users()
+
+        self.btnPassword.config(state="disabled")
+        self.btnNew.config(state="normal")
+        self.btnSave.config(state="disabled")
+        self.btnDelete.config(state="disabled")
+        self.btnCancel.config(state="disabled")
+
+        self.focus()
+
     def cancel_users(self):
         self.clear_entries()
         self.disable_entries()
@@ -150,6 +177,8 @@ class MyUsers(Toplevel):
         self.btnSave.config(state="disabled")
         self.btnDelete.config(state="disabled")
         self.btnCancel.config(state="disabled")
+
+        self.focus()
 
     def enable_entries(self):
         self.idEntry.config(state="normal", bootstyle="success")
