@@ -21,11 +21,17 @@ def existing_table():
     condb.close()
 
 
-def retrieve_info():
-    sqldb = "SELECT user_id, user_name FROM users ORDER BY user_id"
+def retrieve_info(dataId=None):
     condb = connect()
     curdb = condb.cursor()
-    datdb = curdb.execute(sqldb).fetchall()
+
+    if dataId:
+        sqldb = f"SELECT user_name FROM users WHERE user_id = '{dataId}'"
+        datdb = curdb.execute(sqldb).fetchone()
+    else:
+        sqldb = "SELECT user_id, user_name FROM users ORDER BY user_id"
+        datdb = curdb.execute(sqldb).fetchall()
+
     condb.close()
     return datdb
 
