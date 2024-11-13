@@ -122,6 +122,8 @@ class MyUsers(Toplevel):
         self.keyUser = self.tblUser.item(self.tblUser.focus(), "text")
 
         if self.keyUser != "":
+            self.saveType = "Modify"
+
             self.tblUser.config(selectmode="none")
             self.tblUser.unbind("<Double-Button-1>")
             self.tblUser.unbind("<<TreeviewSelect>>")
@@ -140,10 +142,11 @@ class MyUsers(Toplevel):
             self.idEntry.insert(0, modifyUser[0])
             self.nameEntry.insert(0, modifyUser[1])
 
-            self.idEntry.config(state="disabled")
-            self.passwordEntry.config(state="disabled")
+            self.idEntry.config(state="disabled", bootstyle="default")
+            self.passwordEntry.config(state="disabled", bootstyle="default")
 
     def new_users(self):
+        self.saveType = "New"
         self.enable_entries()
         self.btnNew.config(state="disabled")
         self.btnPassword.config(state="disabled")
@@ -153,8 +156,14 @@ class MyUsers(Toplevel):
         self.idEntry.focus()
 
     def save_users(self):
-        db.insert_info(self.idEntry.get(), self.nameEntry.get(),
-                       self.passwordEntry.get())
+        if self.saveType == "New":
+            db.insert_info(self.idEntry.get(), self.nameEntry.get(),
+                           self.passwordEntry.get())
+        else:
+            db.update_info(self.idEntry.get(), self.nameEntry.get())
+
+        self.saveType = None
+
         self.cancel_users()
         self.load_users()
 
