@@ -119,14 +119,29 @@ class MyUsers(Toplevel):
             self.btnPassword.config(state="normal")
 
     def select_modify(self, event):
-        keyUser = self.tblUser.item(self.tblUser.focus(), "text")
+        self.keyUser = self.tblUser.item(self.tblUser.focus(), "text")
 
-        if keyUser != "":
+        if self.keyUser != "":
+            self.tblUser.config(selectmode="none")
+            self.tblUser.unbind("<Double-Button-1>")
+            self.tblUser.unbind("<<TreeviewSelect>>")
+
             self.btnNew.config(state="disabled")
             self.btnPassword.config(state="disabled")
             self.btnSave.config(state="normal")
             self.btnCancel.config(state="normal")
             self.btnDelete.config(state="disabled")
+
+            modifyUser = db.retrieve_info(self.keyUser)
+
+            self.enable_entries()
+            self.clear_entries()
+
+            self.idEntry.insert(0, modifyUser[0])
+            self.nameEntry.insert(0, modifyUser[1])
+
+            self.idEntry.config(state="disabled")
+            self.passwordEntry.config(state="disabled")
 
     def new_users(self):
         self.enable_entries()
@@ -148,7 +163,7 @@ class MyUsers(Toplevel):
     def delete_users(self):
         deleteUser = db.retrieve_info(self.keyUser)
 
-        msgUser = f"Do you want to delete {deleteUser[0]} user info ?."
+        msgUser = f"Do you want to delete {deleteUser[1]} user info ?."
 
         answer_user = Messagebox.show_question(message=msgUser,
                                                title="Delete User", alert=True,
