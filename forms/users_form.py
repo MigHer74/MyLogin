@@ -184,8 +184,13 @@ class MyUsers(Toplevel):
         self.focus()
 
     def cancel_users(self):
+        self.enable_entries()
         self.clear_entries()
         self.disable_entries()
+
+        self.tblUser.config(selectmode="browse")
+        self.tblUser.bind("<Double-Button-1>", self.select_modify)
+        self.tblUser.bind("<<TreeviewSelect>>", self.select_delete)
 
         self.btnPassword.config(state="disabled")
         self.btnNew.config(state="normal")
