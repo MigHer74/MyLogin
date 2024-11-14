@@ -79,6 +79,7 @@ class MyUsers(Toplevel):
         self.btnNew.grid(row=0, column=0, padx=(0, 20), pady=(0, 20))
 
         self.btnPassword = Button(self.btnFrame, width=15, text="Password",
+                                  command=self.change_password,
                                   state="disabled", bootstyle="info")
         self.btnPassword.grid(row=0, column=1, pady=(0, 20))
 
@@ -154,6 +155,33 @@ class MyUsers(Toplevel):
         self.btnCancel.config(state="normal")
         self.btnDelete.config(state="disabled")
         self.idEntry.focus()
+
+    def change_password(self):
+        self.saveType = "Change"
+        self.keyUser = self.tblUser.item(self.tblUser.focus(), "text")
+
+        self.tblUser.config(selectmode="none")
+        self.tblUser.unbind("<Double-Button-1>")
+        self.tblUser.unbind("<<TreeviewSelect>>")
+
+        self.btnNew.config(state="disabled")
+        self.btnPassword.config(state="disabled")
+        self.btnSave.config(state="normal")
+        self.btnCancel.config(state="normal")
+        self.btnDelete.config(state="disabled")
+
+        changeUser = db.retrieve_info(self.keyUser)
+
+        self.enable_entries()
+        self.clear_entries()
+
+        self.idEntry.insert(0, changeUser[0])
+        self.nameEntry.insert(0, changeUser[1])
+
+        self.idEntry.config(state="disabled", bootstyle="default")
+        self.nameEntry.config(state="disabled", bootstyle="default")
+
+        self.passwordEntry.focus()
 
     def save_users(self):
         if self.saveType == "New":
