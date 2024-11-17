@@ -1,3 +1,4 @@
+import bcrypt
 from pathlib import Path
 from PIL import ImageTk, Image
 from src import dba as db
@@ -20,3 +21,11 @@ def image_resize(infoPic, infoWidth, infoHeight):
     imgFin = ImageTk.PhotoImage(imgTemp)
 
     return imgFin
+
+
+def hashing_password(dataPassword):
+    passwordHashed = bcrypt.hashpw(dataPassword.encode('utf-8'),
+                                   bcrypt.gensalt())
+    passwordStorage = passwordHashed.decode('utf-8')
+
+    return passwordStorage
