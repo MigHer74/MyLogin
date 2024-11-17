@@ -187,8 +187,10 @@ class MyUsers(Toplevel):
         if self.saveType == "New":
             db.insert_info(self.idEntry.get(), self.nameEntry.get(),
                            self.passwordEntry.get())
-        else:
+        elif self.saveType == "Modify":
             db.update_info(self.idEntry.get(), self.nameEntry.get())
+        elif self.saveType == "Change":
+            db.update_password(self.keyUser, self.passwordEntry.get())
 
         self.saveType = None
 
