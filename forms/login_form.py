@@ -1,5 +1,6 @@
 from ttkbootstrap import Window, Frame, Label, Entry, Button, Combobox
 from src import tools as tl
+from src import dba as db
 from forms import users_form as uf
 
 
@@ -7,6 +8,7 @@ class MyLogin(Window):
     def __init__(self):
         super().__init__(title="MyLogin", resizable=(False, False),
                          themename="superhero")
+        self.load_login()
         self.build_login()
 
     def build_login(self):
@@ -34,7 +36,8 @@ class MyLogin(Window):
         nameLabel = Label(entriesFrame, text="User Name")
         nameLabel.grid(row=0, column=0, padx=(15, 15), pady=(15, 0))
 
-        nameCombo = Combobox(entriesFrame, width=23, state="readonly")
+        nameCombo = Combobox(entriesFrame, width=23, values=self.dataUsers,
+                             state="readonly")
         nameCombo.grid(row=1, column=0, padx=(15, 15), pady=(5, 15))
 
         passwordLabel = Label(entriesFrame, text="Password")
@@ -66,3 +69,10 @@ class MyLogin(Window):
                                command=lambda: uf.MyUsers(self),
                                bootstyle="success-link")
         addUserButton.pack()
+
+    def load_login(self):
+        self.dataUsers = []
+        loadUsers = db.retrieve_info()
+
+        for user in loadUsers:
+            self.dataUsers.append(user[1])
