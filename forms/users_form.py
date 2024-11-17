@@ -2,6 +2,7 @@ from ttkbootstrap import Toplevel, Frame, Label, Entry, Button
 from ttkbootstrap import Treeview, Scrollbar
 from ttkbootstrap.dialogs.dialogs import Messagebox
 from src import dba as db
+from src import tools as tl
 
 
 class MyUsers(Toplevel):
@@ -185,12 +186,14 @@ class MyUsers(Toplevel):
 
     def save_users(self):
         if self.saveType == "New":
+            userPassword = tl.hashing_password(self.passwordEntry.get())
             db.insert_info(self.idEntry.get(), self.nameEntry.get(),
-                           self.passwordEntry.get())
+                           userPassword)
         elif self.saveType == "Modify":
             db.update_info(self.idEntry.get(), self.nameEntry.get())
         elif self.saveType == "Change":
-            db.update_password(self.keyUser, self.passwordEntry.get())
+            userPassword = tl.hashing_password(self.passwordEntry.get())
+            db.update_password(self.keyUser, userPassword)
 
         self.saveType = None
 
