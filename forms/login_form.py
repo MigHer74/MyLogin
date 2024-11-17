@@ -34,9 +34,6 @@ class MyLogin(Window):
         nameLabel = Label(entriesFrame, text="User Name")
         nameLabel.grid(row=0, column=0, padx=(15, 15), pady=(15, 0))
 
-        # nameEntry = Entry(entriesFrame, width=25)
-        # nameEntry.grid(row=1, column=0, padx=(15, 15), pady=(5, 15))
-
         nameCombo = Combobox(entriesFrame, width=23, state="readonly")
         nameCombo.grid(row=1, column=0, padx=(15, 15), pady=(5, 15))
 
