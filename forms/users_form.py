@@ -10,6 +10,7 @@ class MyUsers(Toplevel):
         super().__init__(title="Users Information", resizable=(False, False))
 
         self.build_users()
+        self.place_window_center()
         self.transient(parent)
         self.grab_set()
         self.focus()
