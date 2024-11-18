@@ -29,3 +29,7 @@ def hashing_password(dataPassword):
     passwordStorage = passwordHashed.decode('utf-8')
 
     return passwordStorage
+
+
+def hashing_compare(dataDba, dataEntry):
+    return bcrypt.checkpw(dataEntry.encode('utf-8'), dataDba.encode('utf-8'))
