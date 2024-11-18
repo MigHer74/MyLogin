@@ -1,4 +1,5 @@
 from ttkbootstrap import Window, Frame, Label, Entry, Button, Combobox
+from ttkbootstrap.dialogs.dialogs import Messagebox
 from src import tools as tl
 from src import dba as db
 from forms import users_form as uf
@@ -36,22 +37,22 @@ class MyLogin(Window):
         nameLabel = Label(entriesFrame, text="User Name")
         nameLabel.grid(row=0, column=0, padx=(15, 15), pady=(15, 0))
 
-        nameCombo = Combobox(entriesFrame, width=23, values=self.dataUsers,
-                             state="readonly")
-        nameCombo.grid(row=1, column=0, padx=(15, 15), pady=(5, 15))
+        self.nameCombo = Combobox(entriesFrame, width=23,
+                                  values=self.dataUsers, state="readonly")
+        self.nameCombo.grid(row=1, column=0, padx=(15, 15), pady=(5, 15))
 
         passwordLabel = Label(entriesFrame, text="Password")
         passwordLabel.grid(row=2, column=0, padx=(15, 15), pady=(15, 0))
 
-        passwordEntry = Entry(entriesFrame, width=25, show="*")
-        passwordEntry.grid(row=3, column=0, padx=(15, 15), pady=(5, 20))
+        self.passwordEntry = Entry(entriesFrame, width=25, show="*")
+        self.passwordEntry.grid(row=3, column=0, padx=(15, 15), pady=(5, 20))
 
         # Buttons Frame
         buttonsFrame = Frame(self)
         buttonsFrame.grid(row=2, column=1, padx=(40, 20), pady=(20, 0))
 
         buttonAccess = Button(buttonsFrame, width=15, text="Access",
-                              bootstyle="success")
+                              command=self.allow_login, bootstyle="success")
         buttonAccess.grid(row=0, column=0, padx=(0, 25))
 
         buttonCancel = Button(buttonsFrame, width=15, text="Cancel",
@@ -76,3 +77,15 @@ class MyLogin(Window):
 
         for user in loadUsers:
             self.dataUsers.append(user[1])
+
+    def allow_login(self):
+        getPassword = db.seek_password(self.nameCombo.get())
+        allowAccess = tl.hashing_compare(getPassword, self.passwordEntry.get())
+
+        if allowAccess:
+            Messagebox.ok(title="Access Granted", message="ACCESS GRANTED!!!",
+                          parent=self)
+        else:
+            Messagebox.show_error(title="Access Denied",
+                                  message="ACCESS DENIED!!!",
+                                  parent=self)
