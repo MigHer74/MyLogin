@@ -23,6 +23,7 @@ This little project is going to be a part for a larger project.
 | dba.py           | Functions for manage the database.                               |
 | tools.py         | Contains functions for the app.                                  |
 | login_form.py    | The file contains the code of the main window.                   |
+| users_form.py    | The file contains the code of managing users info.               |
 | requirements.txt | File containing the names of the project's additional libraries. |
 | readme.md        | Description and information of the project.                      |
 | .gitignore       | Includes non-important files of the project.                     |
