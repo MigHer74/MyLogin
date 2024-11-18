@@ -43,7 +43,7 @@ class MyLogin(Window):
         passwordLabel = Label(entriesFrame, text="Password")
         passwordLabel.grid(row=2, column=0, padx=(15, 15), pady=(15, 0))
 
-        passwordEntry = Entry(entriesFrame, width=25)
+        passwordEntry = Entry(entriesFrame, width=25, show="*")
         passwordEntry.grid(row=3, column=0, padx=(15, 15), pady=(5, 20))
 
         # Buttons Frame
