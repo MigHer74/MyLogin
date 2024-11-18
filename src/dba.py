@@ -78,3 +78,13 @@ def delete_info(dataId):
     curdb.execute(sqldb)
     condb.commit()
     condb.close()
+
+
+def seek_password(dataName):
+    sqldb = f"SELECT user_password FROM users WHERE user_name = '{dataName}'"
+
+    condb = connect()
+    curdb = condb.cursor()
+    datdb = curdb.execute(sqldb).fetchone()
+    condb.close()
+    return datdb[0]
