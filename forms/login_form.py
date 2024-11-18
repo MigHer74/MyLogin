@@ -11,6 +11,7 @@ class MyLogin(Window):
                          themename="superhero")
         self.load_login()
         self.build_login()
+        self.place_window_center()
 
     def build_login(self):
         # Title Frame
