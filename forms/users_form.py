@@ -190,6 +190,7 @@ class MyUsers(Toplevel):
             userPassword = tl.hashing_password(self.passwordEntry.get())
             db.insert_info(self.idEntry.get(), self.nameEntry.get(),
                            userPassword)
+            self.update_master()
         elif self.saveType == "Modify":
             db.update_info(self.idEntry.get(), self.nameEntry.get())
         elif self.saveType == "Change":
@@ -257,3 +258,14 @@ class MyUsers(Toplevel):
         self.idEntry.delete(0, "end")
         self.nameEntry.delete(0, "end")
         self.passwordEntry.delete(0, "end")
+
+    def update_master(self):
+        dataUsers = []
+        loadUsers = db.retrieve_info()
+
+        if loadUsers:
+            for user in loadUsers:
+                dataUsers.append(user[1])
+
+        self.master.nameCombo.config(values=dataUsers, state="readonly")
+        self.master.passwordEntry.config(state="normal")
