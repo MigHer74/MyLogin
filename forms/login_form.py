@@ -11,6 +11,10 @@ class MyLogin(Window):
                          themename="superhero")
         self.load_login()
         self.build_login()
+
+        if self.loadUsers:
+            self.enable_entries()
+
         self.place_window_center()
 
     def build_login(self):
@@ -75,10 +79,11 @@ class MyLogin(Window):
 
     def load_login(self):
         self.dataUsers = []
-        loadUsers = db.retrieve_info()
+        self.loadUsers = db.retrieve_info()
 
-        for user in loadUsers:
-            self.dataUsers.append(user[1])
+        if self.loadUsers:
+            for user in self.loadUsers:
+                self.dataUsers.append(user[1])
 
     def allow_login(self):
         getPassword = db.seek_password(self.nameCombo.get())
@@ -91,3 +96,7 @@ class MyLogin(Window):
             Messagebox.show_error(title="Access Denied",
                                   message="ACCESS DENIED!!!",
                                   parent=self)
+
+    def enable_entries(self):
+        self.nameCombo.config(state="readonly")
+        self.passwordEntry.config(state="normal")
