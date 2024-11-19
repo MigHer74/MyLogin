@@ -39,13 +39,14 @@ class MyLogin(Window):
         nameLabel.grid(row=0, column=0, padx=(15, 15), pady=(15, 0))
 
         self.nameCombo = Combobox(entriesFrame, width=23,
-                                  values=self.dataUsers, state="readonly")
+                                  values=self.dataUsers, state="disabled")
         self.nameCombo.grid(row=1, column=0, padx=(15, 15), pady=(5, 15))
 
         passwordLabel = Label(entriesFrame, text="Password")
         passwordLabel.grid(row=2, column=0, padx=(15, 15), pady=(15, 0))
 
-        self.passwordEntry = Entry(entriesFrame, width=25, show="*")
+        self.passwordEntry = Entry(entriesFrame, width=25, show="*",
+                                   state="disabled")
         self.passwordEntry.grid(row=3, column=0, padx=(15, 15), pady=(5, 20))
 
         # Buttons Frame
