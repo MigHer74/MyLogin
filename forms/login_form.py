@@ -65,7 +65,18 @@ class MyLogin(Window):
                               command=self.quit, bootstyle="outline-danger")
         buttonCancel.grid(row=0, column=1)
 
-        # Add User Frame
+        # Attributions Frame
+        attributionFrame = Frame(self)
+        attributionFrame.grid(row=3, column=0,  padx=(20, 0), pady=(22, 15),
+                              sticky="w")
+
+        self.imageAlert = tl.image_resize("./img/alert_icon.png", 35, 35)
+
+        attributionButton = Button(attributionFrame, image=self.imageAlert,
+                                   padding=0, bootstyle="success-link")
+        attributionButton.pack()
+
+        # User Frame
         addUserFrame = Frame(self)
         addUserFrame.grid(row=3, column=1, padx=(40, 20), pady=(20, 15),
                           sticky="e")
