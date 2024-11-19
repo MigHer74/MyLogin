@@ -3,6 +3,7 @@ from ttkbootstrap.dialogs.dialogs import Messagebox
 from src import tools as tl
 from src import dba as db
 from forms import users_form as uf
+from forms import about_form as af
 
 
 class MyLogin(Window):
@@ -73,7 +74,8 @@ class MyLogin(Window):
         self.imageAlert = tl.image_resize("./img/alert_icon.png", 35, 35)
 
         attributionButton = Button(attributionFrame, image=self.imageAlert,
-                                   padding=0, bootstyle="success-link")
+                                   padding=0, command=lambda: af.MyAbout(self),
+                                   bootstyle="success-link")
         attributionButton.pack()
 
         # User Frame
