@@ -67,3 +67,10 @@ class MyAbout(Toplevel):
                                 text="'Alert Icon' of icon_small in Freepik",
                                 font=("Arial", 16, "normal"))
         self.rowLabel03.pack()
+
+        # Button Frame
+        self.btnFrame = Frame(self)
+        self.btnFrame.pack()
+
+        self.btnClose = Button(self.btnFrame, width=15, text="Close")
+        self.btnClose.pack()
