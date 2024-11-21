@@ -46,7 +46,7 @@ class MyAbout(Toplevel):
 
         self.rowLabel01 = Label(self.imgFrame01,
                                 text="'Monitor' icon of LAFS in Freepik.",
-                                font=("Arial", 14, "normal"),
+                                font=("Arial", 12, "normal"),
                                 bootstyle="warning")
         self.rowLabel01.pack(padx=(15, 0), expand="y")
 
@@ -57,11 +57,10 @@ class MyAbout(Toplevel):
         self.imgLabel02 = Label(self.imgFrame02, image=self.image02)
         self.imgLabel02.pack(side="left")
 
-        self.rowLabel02 = Label(self.imgFrame02,
-                                text="""'Add User' icon of Md Tanvirul Haque
-                                in Freepik.""",
-                                font=("Arial", 14, "normal"),
-                                bootstyle="warning")
+        self.rowLabel02 = Label(
+            self.imgFrame02,
+            text="'Add User' icon of Md Tanvirul Haque in Freepik.",
+            font=("Arial", 12, "normal"), bootstyle="warning")
         self.rowLabel02.pack(padx=(15, 0), expand="y")
 
         self.imgFrame03 = Frame(self)
@@ -73,7 +72,7 @@ class MyAbout(Toplevel):
 
         self.rowLabel03 = Label(self.imgFrame03,
                                 text="'Alert Icon' of icon_small in Freepik.",
-                                font=("Arial", 14, "normal"),
+                                font=("Arial", 12, "normal"),
                                 bootstyle="warning")
         self.rowLabel03.pack(padx=(15, 0), expand="y")
 
