@@ -21,3 +21,12 @@ class MyAbout(Toplevel):
         self.lblTitle = Label(self.lblFrame, text="MyLogin",
                               font=("Arial", 20, "bold"))
         self.lblTitle.pack()
+
+        # Frame "Developed By"
+        self.devFrame = Frame(self)
+        self.devFrame.pack()
+
+        self.devLabel = Label(self.devFrame,
+                              text="Developed by : Miguel Hernandez",
+                              font=("Arial", 16, "normal"))
+        self.devLabel.pack()
