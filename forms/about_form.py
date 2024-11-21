@@ -21,22 +21,24 @@ class MyAbout(Toplevel):
         self.lblFrame.grid(row=0, column=0, padx=(20, 20), pady=(20, 0))
 
         self.lblTitle = Label(self.lblFrame, text="MyLogin",
-                              font=("Arial", 20, "bold"))
+                              font=("Arial", 30, "bold"),
+                              bootstyle="danger")
         self.lblTitle.pack()
 
         # Frame "Developed By"
         self.devFrame = Frame(self)
-        self.devFrame.grid(row=1, column=0, padx=(20, 20), pady=(20, 0),
-                           sticky="w")
+        self.devFrame.grid(row=1, column=0, padx=(20, 20), pady=(40, 0),
+                           sticky="ew")
 
         self.devLabel = Label(self.devFrame,
-                              text="Developed by : Miguel Hernandez",
-                              font=("Arial", 16, "normal"))
+                              text="Developed by Miguel Hernandez",
+                              font=("Arial", 16, "normal"),
+                              bootstyle="success")
         self.devLabel.pack()
 
         # Frame "Images"
         self.imgFrame01 = Frame(self)
-        self.imgFrame01.grid(row=2, column=0, padx=(20, 20), pady=(20, 0),
+        self.imgFrame01.grid(row=2, column=0, padx=(20, 20), pady=(40, 0),
                              sticky="w")
 
         self.imgLabel01 = Label(self.imgFrame01, image=self.image01)
@@ -44,7 +46,8 @@ class MyAbout(Toplevel):
 
         self.rowLabel01 = Label(self.imgFrame01,
                                 text="'Monitor' icon of LAFS in Freepik.",
-                                font=("Arial", 16, "normal"))
+                                font=("Arial", 14, "normal"),
+                                bootstyle="warning")
         self.rowLabel01.pack(padx=(15, 0), expand="y")
 
         self.imgFrame02 = Frame(self)
@@ -57,7 +60,8 @@ class MyAbout(Toplevel):
         self.rowLabel02 = Label(self.imgFrame02,
                                 text="""'Add User' icon of Md Tanvirul Haque
                                 in Freepik.""",
-                                font=("Arial", 16, "normal"))
+                                font=("Arial", 14, "normal"),
+                                bootstyle="warning")
         self.rowLabel02.pack(padx=(15, 0), expand="y")
 
         self.imgFrame03 = Frame(self)
@@ -69,7 +73,8 @@ class MyAbout(Toplevel):
 
         self.rowLabel03 = Label(self.imgFrame03,
                                 text="'Alert Icon' of icon_small in Freepik.",
-                                font=("Arial", 16, "normal"))
+                                font=("Arial", 14, "normal"),
+                                bootstyle="warning")
         self.rowLabel03.pack(padx=(15, 0), expand="y")
 
         # Button Frame
@@ -78,5 +83,6 @@ class MyAbout(Toplevel):
                            sticky="e")
 
         self.btnClose = Button(self.btnFrame, width=15, text="Close",
-                               bootstyle="success")
+                               command=self.destroy,
+                               bootstyle="info")
         self.btnClose.pack()
